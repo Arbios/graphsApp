@@ -11,6 +11,7 @@
 		84182A9A2995DCB500761F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84182A992995DCB500761F61 /* SceneDelegate.swift */; };
 		84182AA12995DCB700761F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84182AA02995DCB700761F61 /* Assets.xcassets */; };
 		84182AA42995DCB700761F61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84182AA22995DCB700761F61 /* LaunchScreen.storyboard */; };
+		84AC44D7299D139A0041DAE0 /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC44D6299D139A0041DAE0 /* UIAlertAction+Extension.swift */; };
 		84CEED5D299879AF00EF54C8 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 84CEED5C299879AF00EF54C8 /* Charts */; };
 		84CEED60299995EF00EF54C8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84CEED5F299995EF00EF54C8 /* SnapKit */; };
 		84CEED7A2999A29800EF54C8 /* PointsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEED792999A29800EF54C8 /* PointsResponse.swift */; };
@@ -27,7 +28,6 @@
 		84CEED972999B9A300EF54C8 /* PointsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEED922999B9A300EF54C8 /* PointsVC.swift */; };
 		84CEED982999B9A300EF54C8 /* PointsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEED932999B9A300EF54C8 /* PointsUIView.swift */; };
 		84CEED9B2999BB5500EF54C8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEED9A2999BB5500EF54C8 /* BaseViewController.swift */; };
-		84CEED9D2999BE5300EF54C8 /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEED9C2999BE5300EF54C8 /* UIAlertAction+Extension.swift */; };
 		84CEEDA02999C05700EF54C8 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEED9F2999C05700EF54C8 /* Helpers.swift */; };
 		84CEEDA42999D9DB00EF54C8 /* CoordinatorServiceDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEEDA32999D9DB00EF54C8 /* CoordinatorServiceDefault.swift */; };
 		84CEEDA62999D9E100EF54C8 /* CoordinatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEEDA52999D9E100EF54C8 /* CoordinatorService.swift */; };
@@ -62,6 +62,7 @@
 		84182AA02995DCB700761F61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84182AA32995DCB700761F61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84182AA52995DCB700761F61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84AC44D6299D139A0041DAE0 /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 		84CEED792999A29800EF54C8 /* PointsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsResponse.swift; sourceTree = "<group>"; };
 		84CEED7C2999A7F700EF54C8 /* PointTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTableViewCell.swift; sourceTree = "<group>"; };
 		84CEED7E2999B40000EF54C8 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		84CEED922999B9A300EF54C8 /* PointsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsVC.swift; sourceTree = "<group>"; };
 		84CEED932999B9A300EF54C8 /* PointsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsUIView.swift; sourceTree = "<group>"; };
 		84CEED9A2999BB5500EF54C8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		84CEED9C2999BE5300EF54C8 /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIAlertAction+Extension.swift"; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 		84CEED9F2999C05700EF54C8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		84CEEDA32999D9DB00EF54C8 /* CoordinatorServiceDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorServiceDefault.swift; sourceTree = "<group>"; };
 		84CEEDA52999D9E100EF54C8 /* CoordinatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorService.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				84CEEDCF299B0B3300EF54C8 /* LineChartView+Extension.swift */,
-				84CEED9C2999BE5300EF54C8 /* UIAlertAction+Extension.swift */,
+				84AC44D6299D139A0041DAE0 /* UIAlertAction+Extension.swift */,
 				84CEEDC42999ECBB00EF54C8 /* UIButton+Extension.swift */,
 				84CEEDD2299B2BD100EF54C8 /* UIColor+Extension.swift */,
 				84CEEDDB299B3E8100EF54C8 /* UIImage+Extension.swift */,
@@ -433,6 +433,7 @@
 				84CEEDD8299B310500EF54C8 /* Wiggleable.swift in Sources */,
 				84CEEDDC299B3E8100EF54C8 /* UIImage+Extension.swift in Sources */,
 				84CEED7A2999A29800EF54C8 /* PointsResponse.swift in Sources */,
+				84AC44D7299D139A0041DAE0 /* UIAlertAction+Extension.swift in Sources */,
 				84CEED982999B9A300EF54C8 /* PointsUIView.swift in Sources */,
 				84CEED8A2999B97F00EF54C8 /* MainPresenter.swift in Sources */,
 				84CEED942999B9A300EF54C8 /* PointsPresenter.swift in Sources */,
@@ -450,7 +451,6 @@
 				84CEEDBF2999EC6400EF54C8 /* Publisher.swift in Sources */,
 				84182A9A2995DCB500761F61 /* SceneDelegate.swift in Sources */,
 				84CEEDC52999ECBB00EF54C8 /* UIButton+Extension.swift in Sources */,
-				84CEED9D2999BE5300EF54C8 /* UIAlertAction+Extension.swift in Sources */,
 				84CEEDC7299AF79800EF54C8 /* DIWrapper.swift in Sources */,
 				84CEEDDF299B4AF700EF54C8 /* StorageService.swift in Sources */,
 				84CEED8D2999B97F00EF54C8 /* MainVC.swift in Sources */,
