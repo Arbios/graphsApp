@@ -1,6 +1,12 @@
 import UIKit
 import SnapKit
 
+// MARK: PointsViewCellDelegate
+
+protocol PointsViewCellDelegate: AnyObject {
+    func configure(pointCell: UITableViewCell, with point: Point)
+    func configure(chartCell: UITableViewCell, with points: [Point], isSquiggly: Bool)
+}
 
 // MARK: PointsUIView
 
@@ -11,9 +17,14 @@ final class PointsUIView: UIView {
     private lazy var tableView = UITableView().then {
         $0.dataSource = self
         $0.delegate = self
-        $0.register(PointTableViewCell.self, forCellReuseIdentifier: "PointCell")
-        $0.register(ChartTableViewCell.self, forCellReuseIdentifier: "ChartCell")
+        $0.register(PointTableViewCell.self, forCellReuseIdentifier: pointCellReuseIdentifier)
+        $0.register(ChartTableViewCell.self, forCellReuseIdentifier: chartCellReuseIdentifier)
     }
+    private var chartCellReuseIdentifier = "ChartCell"
+    private var pointCellReuseIdentifier = "PointCell"
+    private var chartCellsCount = 1
+    private var chartsRowHeight: CGFloat = 250
+    private var defaultRowHeight: CGFloat = 44
 
     private var points: [Point] = []
     private var isChartSquiggly: Bool = false
@@ -56,6 +67,17 @@ final class PointsUIView: UIView {
             $0.trailing.equalToSuperview()
         }
     }
+
+    private func configure(pointCell: UITableViewCell, with point: Point) {
+        guard let cell = pointCell as? PointTableViewCell else { return }
+        cell.textLabel?.text = "x: \(point.x) y: \(point.y)"
+        cell.textLabel?.textColor = .subTitleColor
+    }
+
+    private func configure(chartCell: UITableViewCell, with points: [Point], isSquiggly: Bool) {
+        guard let cell = chartCell as? ChartTableViewCell else { return }
+        cell.set(points: points, isSquiggly: isSquiggly)
+    }
 }
 
 // MARK: PointsUIView: UITableViewDataSource
@@ -65,20 +87,19 @@ extension PointsUIView: UITableViewDataSource {
     // MARK: - Internal Methods
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return points.count
+        return points.count + chartCellsCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-            case points.count - 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartTableViewCell
-                cell.set(points: points, isSquiggly: isChartSquiggly)
+            case points.count:
+                let cell = tableView.dequeueReusableCell(withIdentifier: chartCellReuseIdentifier, for: indexPath)
+                configure(chartCell: cell, with: points, isSquiggly: isChartSquiggly)
                 return cell
             default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell", for: indexPath) as! PointTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: pointCellReuseIdentifier, for: indexPath)
                 let point = points[indexPath.row]
-                cell.textLabel?.text = "x: \(point.x) y: \(point.y)"
-                cell.textLabel?.textColor = UIColor.subTitleColor
+                configure(pointCell: cell, with: point)
                 return cell
         }
     }
@@ -92,10 +113,10 @@ extension PointsUIView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-            case points.count - 1:
-                return 250
+            case points.count:
+                return chartsRowHeight
             default:
-                return 44
+                return defaultRowHeight
         }
     }
 }

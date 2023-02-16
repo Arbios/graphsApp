@@ -55,8 +55,7 @@ extension PointsPresenterDefault: PointsPresenter {
         }
     }
 
-    func viewDidAppear() {
-    }
+    func viewDidAppear() {}
 
     func toggleLineStyle() {
         view.toggleLineStyle()
